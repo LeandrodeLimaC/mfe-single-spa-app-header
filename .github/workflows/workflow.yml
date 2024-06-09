@@ -3,7 +3,7 @@ name: Deploy MFE @shoppe/app-header
 on: 
   push: 
     branches: 
-      - "init"
+      - main
   
 jobs: 
   build: 
