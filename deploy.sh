@@ -5,10 +5,10 @@ chmod a+x ./jq
 VERSION=$(node --eval="process.stdout.write(require('./package.json').version)")
 
 # Download the import map
-aws s3 cp s3://mfe-shoppe/config/import-map.json import-map.json || echo '{"imports": {}}' > import-map.json
+aws s3 cp s3://cuminato-mfe-shoppe/config/import-map.json import-map.json || echo '{"imports": {}}' > import-map.json
 
 # Upload build
-aws s3 cp dist s3://mfe-shoppe/config/mfe/app-header/$VERSION --recursive
+aws s3 cp dist s3://cuminato-mfe-shoppe/config/mfe/app-header/$VERSION --recursive
 
 echo "Import Map before deployment:"
 cat ./import-map.json
@@ -22,7 +22,7 @@ echo "Import Map after deployment"
 cat new.importmap.json
 
 # Upload
-aws s3 cp --content-type application/importmap+json new.importmap.json s3://mfe-shoppe/config/import-map.json
+aws s3 cp --content-type application/importmap+json new.importmap.json s3://cuminato-mfe-shoppe/config/import-map.json
 
 # Invalidate cache
 aws cloudfront create-invalidation --distribution-id E2CSYO6LJ44WFR --paths '/*'
