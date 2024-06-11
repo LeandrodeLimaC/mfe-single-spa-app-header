@@ -25,4 +25,4 @@ cat new.importmap.json
 aws s3 cp --content-type application/importmap+json new.importmap.json s3://cuminato-mfe-shoppe/config/import-map.json
 
 # Invalidate cache
-aws cloudfront create-invalidation --distribution-id E2CSYO6LJ44WFR --paths '/*'
+# aws cloudfront create-invalidation --distribution-id CLOUDFRONTID --paths '/*'
